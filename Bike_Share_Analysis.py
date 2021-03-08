@@ -609,24 +609,24 @@ def most_trips_weekend(city_file):
         # set up csv reader object
         reader = csv.DictReader(f_in)
         
-        subweekend = 0
-        cusweekend = 0
-        subweekdays = 0
-        cusweekdays = 0
+        subscriber_weekend = 0
+        customer_weekend = 0
+        subscriber_weekdays = 0
+        customer_weekdays = 0
         
         for row in reader:
             if row['day_of_week'] in ('Saturday', 'Sunday'):
                 if row['user_type'] == 'Subscriber':
-                    subweekend += 1
+                    subscriber_weekend += 1
                 elif row['user_type'] == 'Customer':
-                    cusweekend += 1
+                    customer_weekend += 1
             else:
                 if row['user_type'] == 'Subscriber':
-                    subweekdays += 1
+                    subscriber_weekdays += 1
                 elif row['user_type'] == 'Customer':
-                    cusweekdays += 1
+                    customer_weekdays += 1
         
-        print('\n {} \n \n Weekdays:\n    Subscriber: {}\n    Customer:   {}\nWeekend:\n    Subscriber: {}\n    Customer:   {}'.format(city_name(city_file), subweekdays, cusweekdays, subweekend, cusweekend))
+        print('\n {} \n \n Weekdays:\n    Subscriber: {}\n    Customer:   {}\nWeekend:\n    Subscriber: {}\n    Customer:   {}'.format(city_name(city_file), subscriber_weekdays, customer_weekdays, subscriber_weekend, customer_weekend))
         print('_' * 30)
 
 most_trips_weekend(Washington)
